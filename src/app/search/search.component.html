@@ -1,0 +1,32 @@
+<div class="search-container">
+  <div>
+    <label for="search" class="label-text">Search</label><br />
+    <input
+      id="search"
+      type="search"
+      placeholder="Enter Here For Search"
+      [(ngModel)]="searchText"
+      class="input"
+      (keydown)="onClickSearch()"
+    />
+  </div>
+  <button (click)="onClickSearch()" class="search-button">Search</button>
+
+  <br />
+  <br />
+
+  <div class="table">
+    <table class="table-container">
+      <thead>
+        <tr>
+          <th *ngFor="let key of tableKeys">{{ key }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataFetched">
+          <td *ngFor="let key of tableKeys">{{ item[key] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
