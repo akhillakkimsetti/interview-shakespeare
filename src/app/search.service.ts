@@ -13,8 +13,17 @@ export class SearchService {
       .get('https://api.github.com/search/users', {
         params: {
           q: searchString,
+          per_page: 50,
         },
       })
       .pipe(debounceTime(500));
+  }
+
+  getResults() {
+    return this.http.get('https://api.github.com/users', {
+      params: {
+        per_page: 50,
+      },
+    });
   }
 }

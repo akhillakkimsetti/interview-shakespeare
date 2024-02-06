@@ -24,7 +24,16 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of dataFetched">
-          <td *ngFor="let key of tableKeys">{{ item[key] }}</td>
+          <td *ngFor="let key of tableKeys">
+            <p *ngIf="key !== 'avatar_url'">
+              {{ item[key] }}
+            </p>
+            <img
+              *ngIf="key === 'avatar_url'"
+              style="width: 70px; border-radius: 50%"
+              [src]="item[key]"
+            />
+          </td>
         </tr>
       </tbody>
     </table>

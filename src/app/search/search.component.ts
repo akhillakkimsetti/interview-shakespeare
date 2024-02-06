@@ -13,7 +13,17 @@ export class SearchComponent implements OnInit {
   tableKeys: string[];
   constructor(private searchService: SearchService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchService.getResults().subscribe(
+      (val) => {
+        this.dataFetched = val;
+        if (this.dataFetched) this.tableKeys = Object.keys(this.dataFetched[0]);
+      },
+      (err) => {
+        alert(err.message);
+      }
+    );
+  }
 
   onClickSearch() {
     if (this.searchText !== this.previousText && this.searchText !== '') {
